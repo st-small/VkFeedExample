@@ -12,6 +12,7 @@
 		84B13391233FD4C700D86CC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1338F233FD4C700D86CC0 /* Main.storyboard */; };
 		84B13393233FD4C900D86CC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B13392233FD4C900D86CC0 /* Assets.xcassets */; };
 		84B13396233FD4C900D86CC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B13394233FD4C900D86CC0 /* LaunchScreen.storyboard */; };
+		84B1339F233FDC0000D86CC0 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B1339E233FDC0000D86CC0 /* VKSdkFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		84B13392233FD4C900D86CC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84B13395233FD4C900D86CC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84B13397233FD4C900D86CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84B1339E233FDC0000D86CC0 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B1339F233FDC0000D86CC0 /* VKSdkFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				84B1338A233FD4C700D86CC0 /* VkFeedExample */,
 				84B13389233FD4C700D86CC0 /* Products */,
+				84B1339D233FDC0000D86CC0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +68,14 @@
 			path = VkFeedExample;
 			sourceTree = "<group>";
 		};
+		84B1339D233FDC0000D86CC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84B1339E233FDC0000D86CC0 /* VKSdkFramework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +86,7 @@
 				84B13384233FD4C700D86CC0 /* Sources */,
 				84B13385233FD4C700D86CC0 /* Frameworks */,
 				84B13386233FD4C700D86CC0 /* Resources */,
+				84B133A0233FDC1A00D86CC0 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -129,6 +142,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84B133A0233FDC1A00D86CC0 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/VKSdkFramework.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84B13384233FD4C700D86CC0 /* Sources */ = {
@@ -284,6 +319,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3PTYV272Z4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = VkFeedExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +341,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3PTYV272Z4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = VkFeedExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
