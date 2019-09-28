@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		84B1338C233FD4C700D86CC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1338B233FD4C700D86CC0 /* AppDelegate.swift */; };
-		84B1338E233FD4C700D86CC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1338D233FD4C700D86CC0 /* ViewController.swift */; };
-		84B13391233FD4C700D86CC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B1338F233FD4C700D86CC0 /* Main.storyboard */; };
 		84B13393233FD4C900D86CC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B13392233FD4C900D86CC0 /* Assets.xcassets */; };
 		84B13396233FD4C900D86CC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B13394233FD4C900D86CC0 /* LaunchScreen.storyboard */; };
 		84B1339F233FDC0000D86CC0 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B1339E233FDC0000D86CC0 /* VKSdkFramework.framework */; };
+		84B133A3233FE04500D86CC0 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B133A2233FE04500D86CC0 /* AuthService.swift */; };
+		84B133A6233FE2B600D86CC0 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B133A5233FE2B600D86CC0 /* Launcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		84B13388233FD4C700D86CC0 /* VkFeedExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkFeedExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1338B233FD4C700D86CC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		84B1338D233FD4C700D86CC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		84B13390233FD4C700D86CC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84B13392233FD4C900D86CC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84B13395233FD4C900D86CC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84B13397233FD4C900D86CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B1339E233FDC0000D86CC0 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
+		84B133A2233FE04500D86CC0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		84B133A5233FE2B600D86CC0 /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +58,9 @@
 		84B1338A233FD4C700D86CC0 /* VkFeedExample */ = {
 			isa = PBXGroup;
 			children = (
+				84B133A1233FE03400D86CC0 /* Services */,
+				84B133A4233FE2A500D86CC0 /* ViewController */,
 				84B1338B233FD4C700D86CC0 /* AppDelegate.swift */,
-				84B1338D233FD4C700D86CC0 /* ViewController.swift */,
-				84B1338F233FD4C700D86CC0 /* Main.storyboard */,
 				84B13392233FD4C900D86CC0 /* Assets.xcassets */,
 				84B13394233FD4C900D86CC0 /* LaunchScreen.storyboard */,
 				84B13397233FD4C900D86CC0 /* Info.plist */,
@@ -74,6 +74,22 @@
 				84B1339E233FDC0000D86CC0 /* VKSdkFramework.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84B133A1233FE03400D86CC0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				84B133A2233FE04500D86CC0 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		84B133A4233FE2A500D86CC0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84B133A5233FE2B600D86CC0 /* Launcher.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +153,6 @@
 			files = (
 				84B13396233FD4C900D86CC0 /* LaunchScreen.storyboard in Resources */,
 				84B13393233FD4C900D86CC0 /* Assets.xcassets in Resources */,
-				84B13391233FD4C700D86CC0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,22 +185,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84B1338E233FD4C700D86CC0 /* ViewController.swift in Sources */,
+				84B133A3233FE04500D86CC0 /* AuthService.swift in Sources */,
 				84B1338C233FD4C700D86CC0 /* AppDelegate.swift in Sources */,
+				84B133A6233FE2B600D86CC0 /* Launcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		84B1338F233FD4C700D86CC0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84B13390233FD4C700D86CC0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		84B13394233FD4C900D86CC0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -331,7 +339,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ua.kr.ssh.VkFeedExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -353,7 +361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ua.kr.ssh.VkFeedExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
