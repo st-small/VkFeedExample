@@ -9,13 +9,22 @@
 import Foundation
 import VKSdkFramework
 
+public protocol AuthServiceDelegate: class {
+    func authServiceShouldShow(_ viewController: UIViewController)
+    func authServiceSignIn()
+    func authServiceDidSignInFail()
+}
+
 final public class AuthService: NSObject {
     
     // Data
     private let appId = "7151795"
     private let vkSdk: VKSdk
     
-    public override init() {
+    private weak var delegate: AuthServiceDelegate!
+    
+    public init(_ delegate: AuthServiceDelegate) {
+        self.delegate = delegate
         vkSdk = VKSdk.initialize(withAppId: appId)
         super.init()
         
@@ -23,21 +32,44 @@ final public class AuthService: NSObject {
         vkSdk.uiDelegate = self
     }
     
+    public func wakeupSession() {
+        let scope = ["wall", "friends"]
+        
+        VKSdk.wakeUpSession(scope) { [delegate] (state, error) in
+            if state == VKAuthorizationState.authorized {
+                print("VKAuthorizationState.authorized")
+                delegate.authServiceSignIn()
+            } else if state == VKAuthorizationState.initialized {
+                print("VKAuthorizationState.initialized")
+                VKSdk.authorize(scope)
+            } else {
+                let description = error?.localizedDescription ?? ""
+                print("auth problems, state \(state), error  \(description)")
+                delegate.authServiceDidSignInFail()
+            }
+        }
+    }
+    
 }
 
 extension AuthService: VKSdkDelegate {
     public func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
-        print(#function)
+        
+        if result.token != nil {
+            delegate.authServiceSignIn()
+        }
     }
     
     public func vkSdkUserAuthorizationFailed() {
         print(#function)
+        delegate.authServiceDidSignInFail()
     }
 }
 
 extension AuthService: VKSdkUIDelegate {
     public func vkSdkShouldPresent(_ controller: UIViewController!) {
         print(#function)
+        delegate.authServiceShouldShow(controller)
     }
     
     public func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
