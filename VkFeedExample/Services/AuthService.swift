@@ -17,14 +17,18 @@ public protocol AuthServiceDelegate: class {
 
 final public class AuthService: NSObject {
     
+    public static let shared = AuthService()
+    
     // Data
+    public var token: String? {
+        return VKSdk.accessToken()?.accessToken
+    }
     private let appId = "7151795"
     private let vkSdk: VKSdk
     
-    private weak var delegate: AuthServiceDelegate!
+    public weak var delegate: AuthServiceDelegate!
     
-    public init(_ delegate: AuthServiceDelegate) {
-        self.delegate = delegate
+    private override init() {
         vkSdk = VKSdk.initialize(withAppId: appId)
         super.init()
         
@@ -38,14 +42,14 @@ final public class AuthService: NSObject {
         VKSdk.wakeUpSession(scope) { [delegate] (state, error) in
             if state == VKAuthorizationState.authorized {
                 print("VKAuthorizationState.authorized")
-                delegate.authServiceSignIn()
+                delegate?.authServiceSignIn()
             } else if state == VKAuthorizationState.initialized {
                 print("VKAuthorizationState.initialized")
                 VKSdk.authorize(scope)
             } else {
                 let description = error?.localizedDescription ?? ""
                 print("auth problems, state \(state), error  \(description)")
-                delegate.authServiceDidSignInFail()
+                delegate?.authServiceDidSignInFail()
             }
         }
     }

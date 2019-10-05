@@ -15,8 +15,8 @@ final public class Launcher {
     
     public init(_ window: UIWindow?) {
         self.window = window
-        authService = AuthService(self)
-
+        authService = AuthService.shared
+        authService.delegate = self
         prepareStartView()
     }
     
