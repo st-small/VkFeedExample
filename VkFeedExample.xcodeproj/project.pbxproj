@@ -12,6 +12,8 @@
 		8475C4722347B5FB0002BBBE /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8475C4702347B5FB0002BBBE /* AuthViewController.xib */; };
 		8475C4742347D16B0002BBBE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475C4732347D16B0002BBBE /* NetworkService.swift */; };
 		8475C476234889170002BBBE /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475C475234889170002BBBE /* APIConstants.swift */; };
+		8475C4792348A5C90002BBBE /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475C4782348A5C90002BBBE /* FeedResponse.swift */; };
+		8475C47B2348A82B0002BBBE /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475C47A2348A82B0002BBBE /* NetworkDataFetcher.swift */; };
 		84B1338C233FD4C700D86CC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1338B233FD4C700D86CC0 /* AppDelegate.swift */; };
 		84B13393233FD4C900D86CC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B13392233FD4C900D86CC0 /* Assets.xcassets */; };
 		84B13396233FD4C900D86CC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B13394233FD4C900D86CC0 /* LaunchScreen.storyboard */; };
@@ -26,6 +28,8 @@
 		8475C4702347B5FB0002BBBE /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		8475C4732347D16B0002BBBE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8475C475234889170002BBBE /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		8475C4782348A5C90002BBBE /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		8475C47A2348A82B0002BBBE /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		84B13388233FD4C700D86CC0 /* VkFeedExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkFeedExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1338B233FD4C700D86CC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B13392233FD4C900D86CC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8475C4772348A5BA0002BBBE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8475C4782348A5C90002BBBE /* FeedResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		84B1337F233FD4C600D86CC0 = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +101,9 @@
 		84B133A1233FE03400D86CC0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8475C4772348A5BA0002BBBE /* Models */,
 				84B133A2233FE04500D86CC0 /* AuthService.swift */,
+				8475C47A2348A82B0002BBBE /* NetworkDataFetcher.swift */,
 				8475C4732347D16B0002BBBE /* NetworkService.swift */,
 				8475C475234889170002BBBE /* APIConstants.swift */,
 			);
@@ -201,11 +215,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8475C4792348A5C90002BBBE /* FeedResponse.swift in Sources */,
 				84B133A3233FE04500D86CC0 /* AuthService.swift in Sources */,
 				8475C476234889170002BBBE /* APIConstants.swift in Sources */,
 				84B1338C233FD4C700D86CC0 /* AppDelegate.swift in Sources */,
 				8475C4712347B5FB0002BBBE /* AuthViewController.swift in Sources */,
 				8475C46E2347B31F0002BBBE /* FeedViewController.swift in Sources */,
+				8475C47B2348A82B0002BBBE /* NetworkDataFetcher.swift in Sources */,
 				8475C4742347D16B0002BBBE /* NetworkService.swift in Sources */,
 				84B133A6233FE2B600D86CC0 /* Launcher.swift in Sources */,
 			);
