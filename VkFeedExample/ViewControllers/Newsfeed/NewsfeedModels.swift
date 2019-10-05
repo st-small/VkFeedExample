@@ -18,21 +18,33 @@ public enum Newsfeed {
   public enum Model {
     public struct Request {
         public enum RequestType {
-            case some
-            case getFeed
+            case getNewsFeed
         }
     }
     public struct Response {
         public enum ResponseType {
-            case some
-            case presentNewsFeed
+            case presentNewsFeed(feed: FeedResponse)
         }
     }
     public struct ViewModel {
         public enum ViewModelType {
-            case some
-            case displayNewsfeed
+            case displayNewsfeed(feedViewModel: FeedViewModel)
         }
     }
   }
+}
+
+public struct FeedViewModel {
+    public struct Cell: FeedCellViewModel {
+        public var iconUrlString: String
+        public var name: String
+        public var date: String
+        public var text: String?
+        public var likes: String?
+        public var comments: String?
+        public var shares: String?
+        public var views: String?
+    }
+    
+    let cells: [Cell]
 }

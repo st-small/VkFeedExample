@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8475C46E2347B31F0002BBBE /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475C46D2347B31F0002BBBE /* FeedViewController.swift */; };
 		8475C4712347B5FB0002BBBE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475C46F2347B5FB0002BBBE /* AuthViewController.swift */; };
 		8475C4722347B5FB0002BBBE /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8475C4702347B5FB0002BBBE /* AuthViewController.xib */; };
 		8475C4742347D16B0002BBBE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475C4732347D16B0002BBBE /* NetworkService.swift */; };
@@ -32,7 +31,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8475C46D2347B31F0002BBBE /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		8475C46F2347B5FB0002BBBE /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8475C4702347B5FB0002BBBE /* AuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthViewController.xib; sourceTree = "<group>"; };
 		8475C4732347D16B0002BBBE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -85,14 +83,6 @@
 				8475C4702347B5FB0002BBBE /* AuthViewController.xib */,
 			);
 			path = AuthViewController;
-			sourceTree = "<group>";
-		};
-		8475C47D2348CB980002BBBE /* FeedViewController */ = {
-			isa = PBXGroup;
-			children = (
-				8475C46D2347B31F0002BBBE /* FeedViewController.swift */,
-			);
-			path = FeedViewController;
 			sourceTree = "<group>";
 		};
 		8475C47E2348CBA30002BBBE /* Launcher */ = {
@@ -182,7 +172,6 @@
 				8475C47E2348CBA30002BBBE /* Launcher */,
 				8475C47C2348CB850002BBBE /* AuthViewController */,
 				849F1CC22348D7A3004CBB91 /* Newsfeed */,
-				8475C47D2348CB980002BBBE /* FeedViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -300,7 +289,6 @@
 				84B1338C233FD4C700D86CC0 /* AppDelegate.swift in Sources */,
 				84EBDA512348D8A200B88FE5 /* NewsfeedRouter.swift in Sources */,
 				8475C4712347B5FB0002BBBE /* AuthViewController.swift in Sources */,
-				8475C46E2347B31F0002BBBE /* FeedViewController.swift in Sources */,
 				84EBDA522348D8A200B88FE5 /* NewsfeedModels.swift in Sources */,
 				8475C47B2348A82B0002BBBE /* NetworkDataFetcher.swift in Sources */,
 				84EBDA502348D8A200B88FE5 /* NewsfeedWorker.swift in Sources */,

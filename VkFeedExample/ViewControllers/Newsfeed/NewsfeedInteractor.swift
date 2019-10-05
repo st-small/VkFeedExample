@@ -21,9 +21,10 @@ public protocol NewsfeedDataStore {
 }
 
 public class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
-    var presenter: NewsfeedPresentationLogic?
-    var worker: NewsfeedWorker?
-    //var name: String = ""
+    
+    public var presenter: NewsfeedPresentationLogic?
+    private var worker: NewsfeedWorker?
+    private var fetcher: DataFetcher = NetworkDataFetcher(NetworkService())
     
     // MARK: Do something
     public func makeRequest(request: Newsfeed.Model.Request.RequestType) {
@@ -31,11 +32,13 @@ public class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
         worker?.doSomeWork()
         
         switch request {
-        case .some:
-            print(".some Inetractor")
-        case .getFeed:
-            print(".getFeed Inetractor")
-            presenter?.presentData(response: .presentNewsFeed)
+        case .getNewsFeed:
+            fetcher.getFeed { [weak self] (feedResponse) in
+                guard
+                    let `self` = self,
+                    let feedResponse = feedResponse else { return }
+                self.presenter?.presentData(response: .presentNewsFeed(feed: feedResponse))
+            }
         }
     }
 }
