@@ -59,8 +59,8 @@ public class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     public override func viewDidLoad() {
         super.viewDidLoad()
         doSomething()
-        
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
+        table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
     }
     
     public func doSomething() {
@@ -85,13 +85,16 @@ extension NewsfeedViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "index: \(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCell.reuseId, for: indexPath) as! NewsfeedCell
         return cell
     }
 }
 extension NewsfeedViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         interactor?.makeRequest(request: .getFeed)
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 212
     }
 }
