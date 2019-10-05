@@ -38,7 +38,7 @@ extension Launcher: AuthServiceDelegate {
     }
     
     public func authServiceSignIn() {
-        let feedVC = FeedViewController()
+        let feedVC = NewsfeedViewController()
         let nav = UINavigationController(rootViewController: feedVC)
         window?.rootViewController?.present(nav, animated: true, completion: nil)
     }

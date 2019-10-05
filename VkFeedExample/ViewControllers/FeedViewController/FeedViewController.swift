@@ -18,7 +18,7 @@ public class FeedViewController: UIViewController {
         view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         fetcher.getFeed { (feedResponse) in
             guard let feedResponse = feedResponse else { return }
-            feedResponse.items.map { feedItem in
+            _ = feedResponse.items.map { feedItem in
                 print(feedItem.date)
             }
         }
