@@ -9,24 +9,50 @@
 import Foundation
 
 public struct FeedResponseWrapped: Decodable {
-    let response: FeedResponse
+    public let response: FeedResponse
 }
 
 public struct FeedResponse: Decodable {
-    var items: [FeedItem]
+    public var items: [FeedItem]
+    public var profiles: [Profile]
+    public var groups: [Group]
 }
 
 public struct FeedItem: Decodable {
-    let sourceId: Int
-    let postId: Int
-    let text: String?
-    let date: Double
-    let comments: CountableItem?
-    let likes: CountableItem?
-    let reposts: CountableItem?
-    let views: CountableItem?
+    public let sourceId: Int
+    public let postId: Int
+    public let text: String?
+    public let date: Double
+    public let comments: CountableItem?
+    public let likes: CountableItem?
+    public let reposts: CountableItem?
+    public let views: CountableItem?
 }
 
 public struct CountableItem: Decodable {
-    let count: Int
+    public let count: Int
+}
+
+public protocol ProfileRepresentable {
+    var id: Int { get }
+    var name: String { get }
+    var photo: String { get }
+}
+
+public struct Profile: Decodable, ProfileRepresentable {
+    public let id: Int
+    public let firstName: String
+    public let lastName: String
+    public let photo100: String
+    
+    public var name: String { return firstName + " " + lastName }
+    public var photo: String { return photo100 }
+}
+
+public struct Group: Decodable, ProfileRepresentable {
+    public let id: Int
+    public let name: String
+    public let photo100: String
+    
+    public var photo: String { return photo100 }
 }

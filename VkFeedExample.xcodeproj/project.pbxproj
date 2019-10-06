@@ -13,6 +13,7 @@
 		8475C476234889170002BBBE /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475C475234889170002BBBE /* APIConstants.swift */; };
 		8475C4792348A5C90002BBBE /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475C4782348A5C90002BBBE /* FeedResponse.swift */; };
 		8475C47B2348A82B0002BBBE /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475C47A2348A82B0002BBBE /* NetworkDataFetcher.swift */; };
+		84AA51C5234A838D00ED5D66 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA51C4234A838D00ED5D66 /* WebImageView.swift */; };
 		84B1338C233FD4C700D86CC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1338B233FD4C700D86CC0 /* AppDelegate.swift */; };
 		84B13393233FD4C900D86CC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B13392233FD4C900D86CC0 /* Assets.xcassets */; };
 		84B13396233FD4C900D86CC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B13394233FD4C900D86CC0 /* LaunchScreen.storyboard */; };
@@ -37,6 +38,7 @@
 		8475C475234889170002BBBE /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		8475C4782348A5C90002BBBE /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
 		8475C47A2348A82B0002BBBE /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		84AA51C4234A838D00ED5D66 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		84B13388233FD4C700D86CC0 /* VkFeedExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkFeedExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B1338B233FD4C700D86CC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B13392233FD4C900D86CC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 			path = Newsfeed;
 			sourceTree = "<group>";
 		};
+		84AA51C3234A836E00ED5D66 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				84AA51C4234A838D00ED5D66 /* WebImageView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		84B1337F233FD4C600D86CC0 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +152,7 @@
 				84B133A1233FE03400D86CC0 /* Services */,
 				84B133A4233FE2A500D86CC0 /* ViewControllers */,
 				8475C47F2348CBB00002BBBE /* Environment */,
+				84AA51C3234A836E00ED5D66 /* Helpers */,
 			);
 			path = VkFeedExample;
 			sourceTree = "<group>";
@@ -290,6 +301,7 @@
 				84EBDA512348D8A200B88FE5 /* NewsfeedRouter.swift in Sources */,
 				8475C4712347B5FB0002BBBE /* AuthViewController.swift in Sources */,
 				84EBDA522348D8A200B88FE5 /* NewsfeedModels.swift in Sources */,
+				84AA51C5234A838D00ED5D66 /* WebImageView.swift in Sources */,
 				8475C47B2348A82B0002BBBE /* NetworkDataFetcher.swift in Sources */,
 				84EBDA502348D8A200B88FE5 /* NewsfeedWorker.swift in Sources */,
 				8475C4742347D16B0002BBBE /* NetworkService.swift in Sources */,

@@ -34,6 +34,10 @@ public class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
         switch request {
         case .getNewsFeed:
             fetcher.getFeed { [weak self] (feedResponse) in
+                
+                feedResponse?.profiles.map { profile in
+                    print("\(profile) \n\n\n\n\n")
+                }
                 guard
                     let `self` = self,
                     let feedResponse = feedResponse else { return }
