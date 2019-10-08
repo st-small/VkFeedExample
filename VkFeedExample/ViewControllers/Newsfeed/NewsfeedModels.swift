@@ -44,6 +44,14 @@ public struct FeedViewModel {
         public var comments: String?
         public var shares: String?
         public var views: String?
+        
+        public var photoAttachment: FeedCellPhotoAttachmentViewModel?
+    }
+    
+    public struct FeedCellPhotoAttachment: FeedCellPhotoAttachmentViewModel {
+        public var photoUrlString: String?
+        public var width: Int
+        public var height: Int
     }
     
     let cells: [Cell]
