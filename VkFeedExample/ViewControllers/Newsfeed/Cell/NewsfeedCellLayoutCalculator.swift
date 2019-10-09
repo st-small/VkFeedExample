@@ -12,7 +12,7 @@ import UIKit
 public struct Sizes: FeedCellSizes {
     public var postLabelFrame: CGRect
     public var attachmentFrame: CGRect
-    public var bottomView: CGRect
+    public var bottomViewFrame: CGRect
     public var totalHeight: CGFloat
 }
 
@@ -21,6 +21,7 @@ public struct Constants {
     static let topViewHeight: CGFloat = 36
     static let postLabelInsets = UIEdgeInsets(top: 8 + Constants.topViewHeight + 8, left: 8, bottom: 8, right: 8)
     static let postLabelFont = UIFont.systemFont(ofSize: 15)
+    static let bottomViewHeight: CGFloat = 44.0
 }
 
 public protocol FeedCellLayoutCalculatorProtocol {
@@ -50,10 +51,29 @@ public final class FeedCellLayoutCalculator: FeedCellLayoutCalculatorProtocol {
         }
         
         // MARK: Работа с attachmentFrame
+        let attachmentTop = postLabelFrame.size == .zero ? Constants.postLabelInsets.top : postLabelFrame.maxY + Constants.postLabelInsets.bottom
+        var attachmentFrame = CGRect(origin: CGPoint(x: 0 , y: attachmentTop),
+                                     size: .zero)
+        
+        if let attachment = photoAttachment {
+            let photoHeight = Float(attachment.height)
+            let photoWidth = Float(attachment.width)
+            let ratio = CGFloat(photoHeight / photoWidth)
+            
+            attachmentFrame.size = CGSize(width: cardViewWidth, height: cardViewWidth * ratio)
+        }
+        
+        // MARK: Работа с bottomViewFrame
+        let bottomViewTop = max(postLabelFrame.maxY, attachmentFrame.maxY)
+        let bottomViewFrame = CGRect(origin: CGPoint(x: 0, y: bottomViewTop),
+                                     size: CGSize(width: cardViewWidth, height: Constants.bottomViewHeight))
+        
+        // MARK: Работа с totalHeight
+        let totalHeight = bottomViewFrame.maxY + Constants.cardInsets.bottom
         
         return Sizes(postLabelFrame: postLabelFrame,
-                     attachmentFrame: .zero,
-                     bottomView: .zero,
-                     totalHeight: 300)
+                     attachmentFrame: attachmentFrame,
+                     bottomViewFrame: bottomViewFrame,
+                     totalHeight: totalHeight)
     }
 }
