@@ -18,6 +18,14 @@ public protocol FeedCellViewModel {
     var shares: String? { get }
     var views: String? { get }
     var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+    var sizes: FeedCellSizes { get }
+}
+
+public protocol FeedCellSizes {
+    var postLabelFrame: CGRect { get }
+    var attachmentFrame: CGRect { get }
+    var bottomView: CGRect { get }
+    var totalHeight: CGFloat { get }
 }
 
 public protocol FeedCellPhotoAttachmentViewModel {
@@ -31,6 +39,7 @@ public class NewsfeedCell: UITableViewCell {
     public static let reuseId = "NewsfeedCell"
     
     // UI elements
+    @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var iconImageView: WebImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
@@ -40,12 +49,19 @@ public class NewsfeedCell: UITableViewCell {
     @IBOutlet private weak var commentsLabel: UILabel!
     @IBOutlet private weak var sharesLabel: UILabel!
     @IBOutlet private weak var viewsLabel: UILabel!
+    @IBOutlet private weak var bottomView: UIView!
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         
         iconImageView.layer.cornerRadius = iconImageView.frame.width / 2
         iconImageView.clipsToBounds = true
+        
+        cardView.layer.cornerRadius = 10
+        cardView.clipsToBounds = true
+        
+        backgroundColor = .clear
+        selectionStyle = .none
     }
     
     public func set(viewModel: FeedCellViewModel) {
@@ -57,6 +73,10 @@ public class NewsfeedCell: UITableViewCell {
         commentsLabel.text = viewModel.comments
         sharesLabel.text = viewModel.shares
         viewsLabel.text = viewModel.views
+        
+        postLabel.frame = viewModel.sizes.postLabelFrame
+        postImageView.frame = viewModel.sizes.attachmentFrame
+        bottomView.frame = viewModel.sizes.bottomView
         
         if let photoAttachment = viewModel.photoAttachment {
                 postImageView.set(imageURL: photoAttachment.photoUrlString)
