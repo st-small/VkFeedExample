@@ -96,7 +96,8 @@ extension NewsfeedViewController: UITableViewDataSource {
 //        let cellViewModel = feedViewModel.cells[indexPath.row]
 //        cell.set(viewModel: cellViewModel)
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCodeCell.reuseId, for: indexPath) as! NewsfeedCodeCell
-        cell.textLabel?.text = "index \(indexPath.row)"
+        let cellViewModel = feedViewModel.cells[indexPath.row]
+        cell.set(viewModel: cellViewModel)
         return cell
     }
 }
@@ -104,6 +105,6 @@ extension NewsfeedViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellViewModel = feedViewModel.cells[indexPath.row]
-        return 212//cellViewModel.sizes.totalHeight
+        return cellViewModel.sizes.totalHeight
     }
 }
