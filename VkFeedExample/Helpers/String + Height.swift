@@ -11,7 +11,7 @@ import UIKit
 
 public extension String {
     
-    public func height(width: CGFloat, font: UIFont) -> CGFloat {
+    func height(width: CGFloat, font: UIFont) -> CGFloat {
         let textSize = CGSize(width: width, height: .greatestFiniteMagnitude)
         let size = self.boundingRect(with: textSize,
                                      options: .usesLineFragmentOrigin,
