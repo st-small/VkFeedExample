@@ -10,6 +10,7 @@ import Foundation
 
 public protocol DataFetcher {
     func getFeed(response: @escaping (FeedResponse?) -> ())
+    func getUser(response: @escaping (UserResponse?) -> ())
 }
 
 public struct NetworkDataFetcher: DataFetcher {
@@ -31,6 +32,20 @@ public struct NetworkDataFetcher: DataFetcher {
             
             let decoded = self.decodeJSON(type: FeedResponseWrapped.self, from: data)
             response(decoded?.response)
+        }
+    }
+    
+    public func getUser(response: @escaping (UserResponse?) -> ()) {
+        guard let userId = AuthService.shared.userId else { return }
+        let params = ["user_ids": userId, "fields": "photo_100"]
+        networking.request(path: APIConstants.user, params: params) { (data, error) in
+            if let error = error {
+                print("Error recieved requesting data: \(error.localizedDescription)")
+                response(nil)
+            }
+            
+            let decoded = self.decodeJSON(type: UserResponseWrapped.self, from: data)
+            response(decoded?.response.first)
         }
     }
     

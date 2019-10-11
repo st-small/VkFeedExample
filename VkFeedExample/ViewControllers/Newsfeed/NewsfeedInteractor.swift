@@ -40,6 +40,10 @@ public class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
                 self?.feedResponse = feedResponse
                 self?.presentFeed()
             }
+        case .getUser:
+            fetcher.getUser { [weak self] (userResponse) in
+                self?.presenter?.presentData(response: .presentUserInfo(user: userResponse))
+            }
         case .revealPostIds(let postId):
             revealedPostIds.append(postId)
             

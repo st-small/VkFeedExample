@@ -27,7 +27,7 @@ public final class NetworkService: Networking {
         var allParams = params
         allParams["access_token"] = token
         allParams["v"] = APIConstants.version
-        let url = self.url(from: APIConstants.newsFeed, params: allParams)
+        let url = self.url(from: path, params: allParams)
         let request = URLRequest(url: url)
         let task = createDataTask(from: request, completion: completion)
         task.resume()

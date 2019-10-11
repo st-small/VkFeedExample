@@ -23,6 +23,10 @@ final public class AuthService: NSObject {
     public var token: String? {
         return VKSdk.accessToken()?.accessToken
     }
+    
+    public var userId: String? {
+        return VKSdk.accessToken()?.userId
+    }
     private let appId = "7151795"
     private let vkSdk: VKSdk
     
