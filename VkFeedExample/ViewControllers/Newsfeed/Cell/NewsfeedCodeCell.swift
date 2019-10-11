@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
+public protocol NewsfeedCodeCellDelegate: class {
+    func revealPost(for cell: NewsfeedCodeCell)
+}
+
 public final class NewsfeedCodeCell: UITableViewCell {
     
     public static let reuseId = "NewsfeedCodeCell"
+    
+    private weak var delegate: NewsfeedCodeCellDelegate?
     
     private let cardView: UIView = {
         let view = UIView()
@@ -36,6 +42,16 @@ public final class NewsfeedCodeCell: UITableViewCell {
         return label
     }()
     
+    private let moreTextButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        button.setTitleColor(#colorLiteral(red: 0.4, green: 0.6235294118, blue: 0.831372549, alpha: 1), for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.contentVerticalAlignment = .center
+        button.setTitle("Показать полностью...", for: .normal)
+        return button
+    }()
+    
     let postImageView: WebImageView = {
         let imageView = WebImageView()
         return imageView
@@ -49,6 +65,8 @@ public final class NewsfeedCodeCell: UITableViewCell {
     private let iconImageView: WebImageView = {
         let imageView = WebImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = Constants.topViewHeight/2
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -159,11 +177,20 @@ public final class NewsfeedCodeCell: UITableViewCell {
         return label
     }()
     
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        iconImageView.set(imageURL: nil)
+        postImageView.set(imageURL: nil)
+    }
+    
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = .clear
         selectionStyle = .none
+        
+        moreTextButton.addTarget(self, action: #selector(moreTextButtonTouched), for: .touchUpInside)
         
         overlayFirstLayer()
         overlaySecondLayer()
@@ -172,7 +199,12 @@ public final class NewsfeedCodeCell: UITableViewCell {
         overlayFourthLayerOnBottomViewViews()
     }
     
-    public func set(viewModel: FeedCellViewModel) {
+    @objc private func moreTextButtonTouched() {
+        delegate?.revealPost(for: self)
+    }
+    
+    public func set(viewModel: FeedCellViewModel, delegate: NewsfeedCodeCellDelegate) {
+        self.delegate = delegate
         iconImageView.set(imageURL: viewModel.iconUrlString)
         nameLabel.text = viewModel.name
         dateLabel.text = viewModel.date
@@ -183,6 +215,7 @@ public final class NewsfeedCodeCell: UITableViewCell {
         viewsLabel.text = viewModel.views
         
         postLabel.frame = viewModel.sizes.postLabelFrame
+        moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         postImageView.frame = viewModel.sizes.attachmentFrame
         bottomView.frame = viewModel.sizes.bottomViewFrame
         
@@ -204,6 +237,7 @@ public final class NewsfeedCodeCell: UITableViewCell {
     private func overlaySecondLayer() {
         cardView.addSubview(topView)
         cardView.addSubview(postLabel)
+        cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
         cardView.addSubview(bottomView)
         
@@ -212,12 +246,6 @@ public final class NewsfeedCodeCell: UITableViewCell {
         topView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8).isActive = true
         topView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 8).isActive = true
         topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).isActive = true
-        
-        // postLabel constraints
-        
-        // postImageView constraints
-        
-        // bottomView constraints
     }
     
     private func overlayThirdLayerOnTopView() {

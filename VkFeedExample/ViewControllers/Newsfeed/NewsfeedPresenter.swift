@@ -33,22 +33,24 @@ public class NewsfeedPresenter: NewsfeedPresentationLogic {
     public func presentData(response: Newsfeed.Model.Response.ResponseType) {
         
         switch response {
-        case .presentNewsFeed(let feed):
-            let cells = feed.items.map { cellViewModel(from: $0, profiles: feed.profiles, groups: feed.groups) }
+        case .presentNewsFeed(let feed, let revealedPostIds):
+            let cells = feed.items.map { cellViewModel(from: $0, profiles: feed.profiles, groups: feed.groups, revealedPostIds: revealedPostIds) }
             let feedViewModel = FeedViewModel(cells: cells)
             viewController?.displayData(viewModel: .displayNewsfeed(feedViewModel: feedViewModel))
         }
     }
     
-    private func cellViewModel(from feedItem: FeedItem, profiles: [Profile], groups: [Group]) -> FeedViewModel.Cell {
+    private func cellViewModel(from feedItem: FeedItem, profiles: [Profile], groups: [Group], revealedPostIds: [Int]) -> FeedViewModel.Cell {
         let profile = self.profile(for: feedItem.sourceId, profiles: profiles, groups: groups)
         let photoAttachment = self.photoAttachment(feedItem: feedItem)
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatter.string(from: date)
         
-        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachment)
+        let isFullSized = revealedPostIds.contains(feedItem.postId)
         
-        return FeedViewModel.Cell(iconUrlString: profile.photo,
+        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachment, isFullSizedPost: isFullSized)
+        
+        return FeedViewModel.Cell(postId: feedItem.postId, iconUrlString: profile.photo,
                                   name: profile.name,
                                   date: dateTitle,
                                   text: feedItem.text,

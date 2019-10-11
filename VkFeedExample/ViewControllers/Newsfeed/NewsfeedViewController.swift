@@ -97,14 +97,29 @@ extension NewsfeedViewController: UITableViewDataSource {
 //        cell.set(viewModel: cellViewModel)
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCodeCell.reuseId, for: indexPath) as! NewsfeedCodeCell
         let cellViewModel = feedViewModel.cells[indexPath.row]
-        cell.set(viewModel: cellViewModel)
+        cell.set(viewModel: cellViewModel, delegate: self)
         return cell
     }
 }
+
 extension NewsfeedViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellViewModel = feedViewModel.cells[indexPath.row]
         return cellViewModel.sizes.totalHeight
+    }
+    
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellViewModel = feedViewModel.cells[indexPath.row]
+        return cellViewModel.sizes.totalHeight
+    }
+}
+
+extension NewsfeedViewController: NewsfeedCodeCellDelegate {
+    public func revealPost(for cell: NewsfeedCodeCell) {
+        guard let indexPath = table.indexPath(for: cell) else { return }
+        let cellViewModel = feedViewModel.cells[indexPath.row]
+        
+        interactor?.makeRequest(request: .revealPostIds(postId: cellViewModel.postId))
     }
 }
