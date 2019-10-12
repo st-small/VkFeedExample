@@ -24,6 +24,7 @@ public class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     // MARK: UI elements
     @IBOutlet private weak var table: UITableView!
     private var titleView = TtitleView()
+    private lazy var footerView = FooterView()
     private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -31,7 +32,7 @@ public class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     }()
     
     // MARK: Data
-    private var feedViewModel = FeedViewModel(cells: [])
+    private var feedViewModel = FeedViewModel(cells: [], footerTitle: nil)
     
     // MARK: Object lifecycle
     
@@ -69,8 +70,6 @@ public class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         doSomething()
         setupTable()
         setupTopBars()
-
-        view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
         interactor?.makeRequest(request: .getNewsFeed)
         interactor?.makeRequest(request: .getUser)
@@ -88,9 +87,18 @@ public class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         table.backgroundColor = .clear
         
         table.addSubview(refreshControl)
+        table.tableFooterView = footerView
     }
     
     private func setupTopBars() {
+        let topBar = UIView(frame: UIApplication.shared.statusBarFrame)
+        topBar.backgroundColor = .white
+        topBar.layer.shadowColor = UIColor.black.cgColor
+        topBar.layer.shadowOpacity = 0.3
+        topBar.layer.shadowOffset = .zero
+        topBar.layer.shadowRadius = 8
+        self.view.addSubview(topBar)
+        
         navigationController?.hidesBarsOnSwipe = true
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.titleView = titleView
@@ -109,10 +117,13 @@ public class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         switch viewModel {
         case .displayNewsfeed(let feedViewModel):
             self.feedViewModel = feedViewModel
+            footerView.setTitle(feedViewModel.footerTitle)
             table.reloadData()
             refreshControl.endRefreshing()
         case .displayUser(let userViewModel):
             titleView.set(userViewModel: userViewModel)
+        case .displayFooterLoader:
+            footerView.showLoader()
         }
     }
     

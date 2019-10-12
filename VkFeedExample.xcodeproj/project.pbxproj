@@ -30,6 +30,9 @@
 		84B7A9AF2350F4EA00016B2F /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A9AE2350F4EA00016B2F /* TitleView.swift */; };
 		84B7A9B12350F59400016B2F /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A9B02350F59400016B2F /* InsertableTextField.swift */; };
 		84B7A9B32350FD1500016B2F /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A9B22350FD1500016B2F /* UserResponse.swift */; };
+		84B7A9B623521A7800016B2F /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A9B523521A7800016B2F /* FooterView.swift */; };
+		84B7A9B82352208B00016B2F /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 84B7A9B72352208B00016B2F /* Localizable.stringsdict */; };
+		84B7A9BA2352264C00016B2F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A9B92352264C00016B2F /* GradientView.swift */; };
 		84EBDA4F2348D8A200B88FE5 /* NewsfeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBDA492348D8A200B88FE5 /* NewsfeedPresenter.swift */; };
 		84EBDA502348D8A200B88FE5 /* NewsfeedWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBDA4A2348D8A200B88FE5 /* NewsfeedWorker.swift */; };
 		84EBDA512348D8A200B88FE5 /* NewsfeedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBDA4B2348D8A200B88FE5 /* NewsfeedRouter.swift */; };
@@ -67,6 +70,9 @@
 		84B7A9AE2350F4EA00016B2F /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		84B7A9B02350F59400016B2F /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
 		84B7A9B22350FD1500016B2F /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserResponse.swift; path = VkFeedExample/Services/Models/UserResponse.swift; sourceTree = SOURCE_ROOT; };
+		84B7A9B523521A7800016B2F /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		84B7A9B72352208B00016B2F /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		84B7A9B92352264C00016B2F /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		84EBDA492348D8A200B88FE5 /* NewsfeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedPresenter.swift; sourceTree = "<group>"; };
 		84EBDA4A2348D8A200B88FE5 /* NewsfeedWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedWorker.swift; sourceTree = "<group>"; };
 		84EBDA4B2348D8A200B88FE5 /* NewsfeedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedRouter.swift; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 				84B7A9B22350FD1500016B2F /* UserResponse.swift */,
 				84B13394233FD4C900D86CC0 /* LaunchScreen.storyboard */,
 				84B13397233FD4C900D86CC0 /* Info.plist */,
+				84B7A9B72352208B00016B2F /* Localizable.stringsdict */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -130,6 +137,7 @@
 		849F1CC22348D7A3004CBB91 /* Newsfeed */ = {
 			isa = PBXGroup;
 			children = (
+				84B7A9B423521A6500016B2F /* FooterView */,
 				84B7A9AD2350F4D400016B2F /* TitleView */,
 				84B7A9A62350953B00016B2F /* GalleryView */,
 				84EBDA572348ED8200B88FE5 /* Cell */,
@@ -147,7 +155,6 @@
 		84AA51C3234A836E00ED5D66 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				84AA51C4234A838D00ED5D66 /* WebImageView.swift */,
 				84B7A9A4234F6BE000016B2F /* Constraints.swift */,
 				84B7A967234D313600016B2F /* String + Height.swift */,
 			);
@@ -178,6 +185,7 @@
 				84B133A4233FE2A500D86CC0 /* ViewControllers */,
 				8475C47F2348CBB00002BBBE /* Environment */,
 				84AA51C3234A836E00ED5D66 /* Helpers */,
+				84B7A9BB235229CA00016B2F /* Views */,
 			);
 			path = VkFeedExample;
 			sourceTree = "<group>";
@@ -229,6 +237,23 @@
 				84B7A9B02350F59400016B2F /* InsertableTextField.swift */,
 			);
 			path = TitleView;
+			sourceTree = "<group>";
+		};
+		84B7A9B423521A6500016B2F /* FooterView */ = {
+			isa = PBXGroup;
+			children = (
+				84B7A9B523521A7800016B2F /* FooterView.swift */,
+			);
+			path = FooterView;
+			sourceTree = "<group>";
+		};
+		84B7A9BB235229CA00016B2F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84AA51C4234A838D00ED5D66 /* WebImageView.swift */,
+				84B7A9B92352264C00016B2F /* GradientView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		84EBDA572348ED8200B88FE5 /* Cell */ = {
@@ -306,6 +331,7 @@
 				84B13393233FD4C900D86CC0 /* Assets.xcassets in Resources */,
 				84EBDA562348DF3A00B88FE5 /* NewsfeedViewController.xib in Resources */,
 				84EBDA5B2348EDF600B88FE5 /* NewsfeedCell.xib in Resources */,
+				84B7A9B82352208B00016B2F /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +367,7 @@
 				84B7A9A82350955F00016B2F /* GalleryCollectionView.swift in Sources */,
 				84B7A9B32350FD1500016B2F /* UserResponse.swift in Sources */,
 				8475C4792348A5C90002BBBE /* FeedResponse.swift in Sources */,
+				84B7A9B623521A7800016B2F /* FooterView.swift in Sources */,
 				84B7A9AC2350CA7E00016B2F /* RowLayout.swift in Sources */,
 				84B7A968234D313600016B2F /* String + Height.swift in Sources */,
 				84EBDA532348D8A200B88FE5 /* NewsfeedViewController.swift in Sources */,
@@ -355,6 +382,7 @@
 				84B7A966234D24D100016B2F /* NewsfeedCellLayoutCalculator.swift in Sources */,
 				84B7A9A3234F67B800016B2F /* NewsfeedCodeCell.swift in Sources */,
 				84B7A9A5234F6BE000016B2F /* Constraints.swift in Sources */,
+				84B7A9BA2352264C00016B2F /* GradientView.swift in Sources */,
 				84AA51C5234A838D00ED5D66 /* WebImageView.swift in Sources */,
 				8475C47B2348A82B0002BBBE /* NetworkDataFetcher.swift in Sources */,
 				84EBDA502348D8A200B88FE5 /* NewsfeedWorker.swift in Sources */,

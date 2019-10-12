@@ -45,6 +45,7 @@ public class NewsfeedInteractor: NewsfeedBusinessLogic, NewsfeedDataStore {
                 self?.presenter?.presentData(response: .presentNewsFeed(feed: feed, revealedPostIds: revealedPostIds))
             })
         case .getNextBatch:
+            presenter?.presentData(response: .presentFooterLoader)
             worker?.getNextBatch(completion: { [weak self] (revealedPostIds, feed) in
                 self?.presenter?.presentData(response: .presentNewsFeed(feed: feed, revealedPostIds: revealedPostIds))
             })

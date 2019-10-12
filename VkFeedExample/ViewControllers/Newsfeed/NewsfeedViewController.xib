@@ -21,6 +21,18 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9BD-Kv-ghT" customClass="GradientView" customModule="VkFeedExample" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <color key="backgroundColor" red="1" green="0.14901960780000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                            <color key="value" red="1" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                            <color key="value" red="1" green="0.81568627450980391" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lHr-Fc-sl9">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -30,12 +42,16 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="0.31372547150000002" green="0.1960782707" blue="0.78431379800000001" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="lHr-Fc-sl9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1vS-PL-1vg"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lHr-Fc-sl9" secondAttribute="bottom" id="3Lw-L3-VeC"/>
+                <constraint firstItem="9BD-Kv-ghT" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="C2p-Te-Oso"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lHr-Fc-sl9" secondAttribute="trailing" id="CMK-0r-UEO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9BD-Kv-ghT" secondAttribute="bottom" id="KR0-M3-wX7"/>
                 <constraint firstItem="lHr-Fc-sl9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kbH-A1-D8a"/>
+                <constraint firstItem="9BD-Kv-ghT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lQ2-xW-7aR"/>
+                <constraint firstItem="9BD-Kv-ghT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yDv-6q-e6o"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
