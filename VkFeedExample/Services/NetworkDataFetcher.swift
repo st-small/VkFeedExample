@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol DataFetcher {
-    func getFeed(response: @escaping (FeedResponse?) -> ())
+    func getFeed(nextBatchFrom: String?, response: @escaping (FeedResponse?) -> ())
     func getUser(response: @escaping (UserResponse?) -> ())
 }
 
@@ -21,9 +21,10 @@ public struct NetworkDataFetcher: DataFetcher {
         self.networking = networking
     }
     
-    public func getFeed(response: @escaping (FeedResponse?) -> ()) {
+    public func getFeed(nextBatchFrom: String?, response: @escaping (FeedResponse?) -> ()) {
         
-        let params = ["filters": "post, photo"]
+        var params = ["filters": "post, photo"]
+        params["start_from"] = nextBatchFrom
         networking.request(path: APIConstants.newsFeed, params: params) { (data, error) in
             if let error = error {
                 print("Error recieved requesting data: \(error.localizedDescription)")
@@ -37,7 +38,8 @@ public struct NetworkDataFetcher: DataFetcher {
     
     public func getUser(response: @escaping (UserResponse?) -> ()) {
         guard let userId = AuthService.shared.userId else { return }
-        let params = ["user_ids": userId, "fields": "photo_100"]
+        let params = ["user_ids": userId,
+                      "fields": "photo_100"]
         networking.request(path: APIConstants.user, params: params) { (data, error) in
             if let error = error {
                 print("Error recieved requesting data: \(error.localizedDescription)")

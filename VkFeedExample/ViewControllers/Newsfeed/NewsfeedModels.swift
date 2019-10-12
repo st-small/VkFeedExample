@@ -21,6 +21,7 @@ public enum Newsfeed {
             case getNewsFeed
             case getUser
             case revealPostIds(postId: Int)
+            case getNextBatch
         }
     }
     public struct Response {
